@@ -109,7 +109,7 @@ public class MSPanel extends JPanel implements BombListener {
 
 		else{
 			numShowing++;
-			if(numShowing == difficulty*rows*cols){
+			if(numShowing == rows*cols*(1-difficulty)){
 				JOptionPane.showMessageDialog(null,"You Win! Congrats!");
 				System.exit(0);
 			}
