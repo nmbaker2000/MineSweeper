@@ -58,16 +58,10 @@ public class MSLabel extends JLabel {
 		cell.reveal();
 		notifyListeners();
 
-		for(BombListener x : listeners){
-			removeBombListener(x);
-		}
-
 		repaint();
 	}
 
 	private class MSListener implements MouseListener {
-
-		boolean in = false;
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
@@ -83,8 +77,14 @@ public class MSLabel extends JLabel {
 				else{}
 			}
 			else{
-				if(cell.isHidden())
-					reveal();
+				if(cell.isFlagged()){
+
+				}
+				else{
+					if(cell.isHidden())
+						reveal();
+				}
+
 			}
 		}
 

@@ -54,9 +54,47 @@ public class MSPanel extends JPanel implements BombListener {
 	}
 
 	private void setNumbers(){
+
 		for(int x = 0; x < rows; x++) {
 			for (int y = 0; y < cols; y++) {
+				int bombsNear = 0;
 
+				if((x-1) >= 0){
+					if((y-1) >= 0){
+						if(squares[x-1][y-1].isBomb())
+							bombsNear++;
+					}
+					if((y+1) < cols){
+						if(squares[x-1][y+1].isBomb())
+							bombsNear++;
+					}
+					if(squares[x-1][y].isBomb())
+						bombsNear++;
+				}
+
+				if((x+1) < rows){
+					if((y-1) >= 0){
+						if(squares[x+1][y-1].isBomb())
+							bombsNear++;
+					}
+					if((y+1) < cols){
+						if(squares[x+1][y+1].isBomb())
+							bombsNear++;
+					}
+					if(squares[x+1][y].isBomb())
+						bombsNear++;
+				}
+
+				if((y-1) >= 0){
+					if(squares[x][y-1].isBomb())
+						bombsNear++;
+				}
+
+				if((y+1) < cols){
+					if(squares[x][y+1].isBomb())
+						bombsNear++;
+				}
+				squares[x][y].setBombsNear(bombsNear);
 			}
 		}
 
